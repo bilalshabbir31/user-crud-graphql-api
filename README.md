@@ -5,20 +5,37 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Redirect to http://localhost:3000/graphiql
 
-* System dependencies
+# To fetch all Users
+ {
+   users{
+     id
+     name
+     email
+   }
+ }
 
-* Configuration
+# To fetch only one User
+ {
+   user(id:1){
+     id
+     name
+     email
+   }
+ }
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Create User using Mutation
+ mutation {
+   createUser(input: {
+     name: "Muhammad Bilal"
+     email: "spiderman@mail.com"
+   }) {
+     user {
+       id
+       name
+       email
+     }
+     errors
+   }
+ }
