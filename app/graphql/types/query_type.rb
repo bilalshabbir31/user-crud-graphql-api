@@ -9,12 +9,21 @@ module Types
 
 
       field :users, 
-      [Types::ItemType],
+      [Types::UserType],
       null: false, 
       description: "Return a list of items"
 
+
+      field :user, Types::UserType, null: false do
+        argument :id, ID, required: true
+      end
+
       def users
         User.all
+      end
+
+      def user(id)
+        User.find_by(id)
       end
   end
 end
